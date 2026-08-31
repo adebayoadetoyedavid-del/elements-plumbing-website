@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elements Plumbing and Heating Services — Truro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182430;
+    --ink-soft:#25333f;
+    --copper:#b8743b;
+    --copper-dark:#96592a;
+    --steel:#5c8494;
+    --paper:#f4efe4;
+    --paper-dim:#e9e1d1;
+    --charcoal:#232a2e;
+    --line: rgba(244,239,228,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--paper-dim);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  .brand svg{width:34px;height:34px;flex:none;}
+  .brand-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;line-height:1.15;}
+  .brand-name span{display:block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:0.72rem;color:var(--steel);letter-spacing:0.02em;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{text-decoration:none;font-size:0.94rem;font-weight:500;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--copper-dark);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--copper);color:#fff;
+    padding:11px 20px;border-radius:3px;
+    text-decoration:none;font-weight:600;font-size:0.92rem;
+    border:none;cursor:pointer;font-family:'Work Sans',sans-serif;
+    transition:background .15s ease;
+  }
+  .btn:hover{background:var(--copper-dark);}
+  .btn-ghost{
+    background:transparent;color:var(--paper);border:1px solid var(--line);
+  }
+  .btn-ghost:hover{background:rgba(244,239,228,0.08);}
+  .btn-dark{background:var(--ink);color:var(--paper);}
+  .btn-dark:hover{background:var(--ink-soft);}
+  @media (max-width:760px){ .nav-links a.hide-mobile{display:none;} }
+
+  /* HERO */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;
+    padding-top:76px;padding-bottom:64px;align-items:center;
+  }
+  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} }
+  .kicker{color:var(--copper);font-weight:600;font-size:0.95rem;margin-bottom:14px;}
+  .hero h1{font-size:clamp(2.2rem, 4.4vw, 3.4rem);line-height:1.06;max-width:11.5ch;}
+  .hero p.lede{margin-top:20px;max-width:46ch;color:#cdd6dc;font-size:1.08rem;}
+  .hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .trust-row{display:flex;gap:26px;margin-top:44px;flex-wrap:wrap;}
+  .trust-item{border-left:2px solid var(--copper);padding-left:12px;}
+  .trust-item strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;}
+  .trust-item span{font-size:0.82rem;color:#a9b4bb;}
+  .hero-art{width:100%;}
+
+  /* SERVICES */
+  section{padding:80px 0;}
+  .section-head{max-width:56ch;margin-bottom:44px;}
+  .section-head p{color:#5b656b;margin-top:12px;font-size:1.02rem;}
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--paper-dim);border:1px solid var(--paper-dim);
+  }
+  @media (max-width:860px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--paper);padding:28px 24px;
+  }
+  .service-card svg{width:30px;height:30px;color:var(--copper-dark);margin-bottom:14px;}
+  .service-card h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
+  .service-card p{font-size:0.88rem;color:#5b656b;margin:0;}
+
+  /* ABOUT */
+  .about{background:var(--paper-dim);}
+  .about .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:center;}
+  @media (max-width:860px){ .about .wrap{grid-template-columns:1fr;} }
+  .about h2{font-size:2rem;max-width:12ch;}
+  .about p{margin-top:16px;color:#3f484d;max-width:52ch;}
+  .about-figure{background:var(--ink);border-radius:4px;padding:34px;}
+  .about-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px;}
+  .about-list li{display:flex;gap:12px;font-size:0.95rem;color:var(--paper);}
+  .about-list svg{width:18px;height:18px;flex:none;color:var(--copper);margin-top:2px;}
+
+  /* REVIEWS */
+  .reviews .wrap{}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){ .review-grid{grid-template-columns:1fr;} }
+  .review-card{border:1px solid var(--paper-dim);padding:26px 24px;background:#fff;}
+  .stars{color:var(--copper);letter-spacing:2px;font-size:0.95rem;margin-bottom:12px;}
+  .review-card p{font-size:0.96rem;color:#3f484d;}
+  .review-card footer{margin-top:16px;font-size:0.85rem;color:#8a8f92;font-weight:500;}
+
+  /* BOOKING */
+  .booking{background:var(--ink);color:var(--paper);}
+  .booking .wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;}
+  @media (max-width:860px){ .booking .wrap{grid-template-columns:1fr;} }
+  .booking h2{font-size:2rem;max-width:11ch;color:var(--paper);}
+  .booking p.lede{color:#a9b4bb;margin-top:14px;max-width:38ch;}
+  .contact-block{margin-top:32px;display:grid;gap:16px;}
+  .contact-block a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--paper);font-weight:500;font-size:0.98rem;}
+  .contact-block svg{width:18px;height:18px;color:var(--copper);flex:none;}
+
+  form.booking-form{background:var(--paper);border-radius:4px;padding:32px;color:var(--charcoal);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:560px){ .form-row{grid-template-columns:1fr;} }
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:0.83rem;font-weight:600;margin-bottom:6px;color:var(--ink-soft);}
+  .field input, .field select, .field textarea{
+    width:100%;padding:11px 12px;border:1px solid #d8d0bd;border-radius:3px;
+    font-family:'Work Sans',sans-serif;font-size:0.95rem;background:#fff;color:var(--charcoal);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--steel);outline-offset:1px;border-color:var(--steel);
+  }
+  .field textarea{resize:vertical;min-height:84px;}
+  .form-note{font-size:0.8rem;color:#7a828a;margin-top:6px;}
+  .submit-row{display:flex;align-items:center;gap:16px;margin-top:6px;flex-wrap:wrap;}
+  #formStatus{font-size:0.88rem;color:var(--copper-dark);font-weight:600;}
+
+  /* FOOTER */
+  footer.site-footer{background:#101a22;color:#9aa5ac;padding:48px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;}
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
+  .footer-grid h4{color:var(--paper);font-family:'Work Sans',sans-serif;font-size:0.85rem;font-weight:600;margin-bottom:14px;letter-spacing:0.02em;}
+  .footer-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:0.9rem;}
+  .footer-grid a{text-decoration:none;color:#9aa5ac;}
+  .footer-grid a:hover{color:var(--paper);}
+  .footer-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);font-size:0.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  .photo-note{
+    border:1px dashed #c9bfa5;background:#fbf8f1;padding:14px 18px;
+    font-size:0.85rem;color:#6b6250;border-radius:3px;margin-top:18px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 8h10v8a6 6 0 0 0 6 6h8v10h-10a12 12 0 0 1-12-12V8z" stroke="#B8743B" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="26" cy="14" r="2.4" fill="#5c8494"/>
+      </svg>
+      <span class="brand-name">Elements<span>Plumbing &amp; Heating — Truro</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services" class="hide-mobile">Services</a>
+      <a href="#about" class="hide-mobile">About</a>
+      <a href="#reviews" class="hide-mobile">Reviews</a>
+      <a href="tel:07711786518" class="hide-mobile">07711 786518</a>
+      <a href="#book" class="btn">Book a service</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <div class="wrap">
+      <div>
+        <div class="kicker">Truro, Cornwall — plumbing &amp; heating</div>
+        <h1>Plumbing and heating work done properly, by someone who answers the phone.</h1>
+        <p class="lede">Elements Plumbing and Heating Services is Tim Pascoe's one-man trade business, covering everything from a dripping tap to a full bathroom or central heating install across Truro and the surrounding area.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn">Request a booking</a>
+          <a href="tel:07711786518" class="btn btn-ghost">Call 07711 786518</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item"><strong>5.0 / 5</strong><span>Google rating, 33 reviews</span></div>
+          <div class="trust-item"><strong>10+ yrs</strong><span>trade experience</span></div>
+          <div class="trust-item"><strong>TR1</strong><span>based, Truro-wide coverage</span></div>
+        </div>
+      </div>
+      <div>
+        <svg class="hero-art" viewBox="0 0 460 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="460" height="420" fill="none"/>
+          <g stroke="#3a4d5a" stroke-width="2">
+            <path d="M40 60 H180 V150 H340" />
+            <path d="M40 60 V220 H120 V330" />
+            <path d="M180 150 V260 H300 V330" />
+            <path d="M340 150 V60 H420" />
+            <path d="M120 330 H240 V380" />
+            <path d="M300 330 V380 H400 V260" />
+          </g>
+          <g stroke="#B8743B" stroke-width="2.5">
+            <path d="M420 60 V20" />
+            <path d="M40 20 V60" />
+          </g>
+          <g fill="#5c8494">
+            <circle cx="40" cy="60" r="6"/>
+            <circle cx="180" cy="150" r="6"/>
+            <circle cx="340" cy="150" r="6"/>
+            <circle cx="120" cy="330" r="6"/>
+            <circle cx="300" cy="330" r="6"/>
+            <circle cx="240" cy="380" r="6"/>
+            <circle cx="400" cy="260" r="6"/>
+          </g>
+          <g fill="#B8743B">
+            <circle cx="40" cy="220" r="9"/>
+            <circle cx="180" cy="260" r="9"/>
+            <circle cx="420" cy="60" r="9"/>
+          </g>
+          <g stroke="#232a2e" stroke-width="1" opacity="0.35">
+            <line x1="0" y1="10" x2="460" y2="10"/>
+            <line x1="0" y1="410" x2="460" y2="410"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What Tim covers</h2>
+        <p>From an urgent leak to a planned bathroom refit, these are the jobs Elements takes on most often. Not listed here? Ask — most plumbing and heating work is in scope.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 10.5a6 6 0 1 1-12 0C6 9.5 12 3 12 3z"/></svg>
+          <h3>Leak detection &amp; repair</h3>
+          <p>Tracing hidden leaks and fixing pipework before it does more damage.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M4 12a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4M4 12v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><circle cx="8" cy="8" r="1.5"/></svg>
+          <h3>Drain cleaning</h3>
+          <p>Clearing blocked drains and outdoor plumbing runs.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 21h10M9 21v-4h6v4M5 3h14v10a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V3z"/><path d="M9 3v4M15 3v4"/></svg>
+          <h3>Bathroom &amp; shower installs</h3>
+          <p>Full bathroom fits, shower installation and repairs.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 7h6M9 11h6"/></svg>
+          <h3>Toilet installation &amp; repair</h3>
+          <p>New installs, repairs and replacements.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h4l2-3h4l2 3h4M6 8v9a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/></svg>
+          <h3>Taps &amp; waste disposal</h3>
+          <p>Tap installation and repair, waste disposal units fitted and fixed.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>
+          <h3>Water heaters</h3>
+          <p>Installation and repair of water heating systems.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          <h3>Central heating</h3>
+          <p>Central heating systems installed and maintained, including air source heat pumps.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+          <h3>Sewer &amp; outdoor plumbing</h3>
+          <p>Sewer repair and outdoor plumbing system repair.</p>
+        </div>
+
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12v9M12 12L4 7.5M12 12l8-4.5"/></svg>
+          <h3>General plumbing repairs</h3>
+          <p>Everyday fixes, snags and small jobs other trades won't fit in.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div>
+        <h2>One tradesman, one standard of work</h2>
+        <p>Elements is run by Tim Pascoe, based on Tresawls Road in Truro. There's no call centre and no subcontracting — the person who quotes the job is the person who does it, which is why customers who've used Tim once tend to call him again.</p>
+        <p>Jobs range from a single leaking tap to complete central heating systems and air source heat pump installs, for homes across Truro and the wider area.</p>
+      </div>
+      <div class="about-figure">
+        <ul class="about-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Owner-operated — Tim does the work himself</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 5.0-star rating across 30+ Google reviews</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Small jobs and full installs both welcome</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Based in Truro, TR1 — covers the surrounding area</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Reachable by phone for urgent issues</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What people say after Tim's been round</h2>
+        <p>A few notes pulled from Elements' public Google reviews.</p>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>Called Tim in for a radiator fit after a previous plumber left a mess mid-job — found him professional and quick to put it right.</p>
+          <footer>Jacqui E. — Google review</footer>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>Had Tim install a full central heating system and now calls him for anything else that comes up — fair pricing and clear pride in the work.</p>
+          <footer>Amanda F. — Google review</footer>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>Tim fitted a new bathroom and is just as happy to sort a leaking tap or a blocked drain — honest, reliable and easy to deal with.</p>
+          <footer>Heather T. — Google review</footer>
+        </div>
+      </div>
+      <div class="photo-note">
+        Photos of completed jobs aren't shown here yet — Elements' Facebook and Instagram pages aren't accessible to automated tools, so add photos directly from there once the site is live.
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="book">
+    <div class="wrap">
+      <div>
+        <h2>Book a service</h2>
+        <p class="lede">Fill this in with what you need done and Tim will get back to you to confirm a time. For anything urgent, call directly.</p>
+        <div class="contact-block">
+          <a href="tel:07711786518">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.79.63 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.27a2 2 0 0 1 2.11-.45c.86.3 1.75.51 2.65.63A2 2 0 0 1 22 16.92z"/></svg>
+            07711 786518
+          </a>
+          <a href="mailto:elementscornwall@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+            elementscornwall@gmail.com
+          </a>
+          <a href="https://maps.google.com/?q=46+Tresawls+Rd,+Truro+TR1+3LE" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            46 Tresawls Rd, Truro TR1 3LE
+          </a>
+          <a href="https://www.facebook.com/elementscornwall/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            facebook.com/elementscornwall
+          </a>
+          <a href="https://www.instagram.com/elementscornwall/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            instagram.com/elementscornwall
+          </a>
+        </div>
+      </div>
+
+      <form class="booking-form" id="bookingForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="service">Type of job</label>
+            <select id="service" required>
+              <option value="">Select a service</option>
+              <option>Leak detection / repair</option>
+              <option>Drain cleaning</option>
+              <option>Bathroom / shower install</option>
+              <option>Toilet install / repair</option>
+              <option>Taps / waste disposal</option>
+              <option>Water heater install / repair</option>
+              <option>Central heating / heat pump</option>
+              <option>Sewer / outdoor plumbing</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Preferred date</label>
+            <input type="date" id="date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="address">Property address</label>
+          <input type="text" id="address" placeholder="Where the work is needed" required>
+        </div>
+
+        <div class="field">
+          <label for="details">Job details</label>
+          <textarea id="details" placeholder="What's going on, and anything Tim should know before he calls"></textarea>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn btn-dark">Send booking request</button>
+          <span id="formStatus"></span>
+        </div>
+        <p class="form-note">This opens an email to Tim with your details filled in — nothing is booked until he confirms by phone or email.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h4>Elements Plumbing and Heating Services</h4>
+      <p style="max-width:34ch;font-size:0.9rem;">Owner-operated plumbing and heating, based in Truro and covering the surrounding area. 5.0-star rated on Google.</p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#book">Book a service</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:07711786518">07711 786518</a></li>
+        <li><a href="mailto:elementscornwall@gmail.com">elementscornwall@gmail.com</a></li>
+        <li><a href="https://maps.google.com/?q=46+Tresawls+Rd,+Truro+TR1+3LE" target="_blank" rel="noopener">46 Tresawls Rd, Truro TR1 3LE</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© <span id="year"></span> Elements Plumbing and Heating Services</span>
+    <span>Site built for Elements — not an official Google listing</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('bookingForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('date').value;
+    const address = document.getElementById('address').value.trim();
+    const details = document.getElementById('details').value.trim();
+
+    const subject = encodeURIComponent('Booking request: ' + (service || 'Plumbing / heating job') + ' — ' + name);
+    const body = encodeURIComponent(
+      'New booking request from the website:\n\n' +
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Email: ' + email + '\n' +
+      'Service: ' + service + '\n' +
+      'Preferred date: ' + (date || 'Not specified') + '\n' +
+      'Address: ' + address + '\n\n' +
+      'Details:\n' + (details || 'None provided')
+    );
+
+    window.location.href = 'mailto:elementscornwall@gmail.com?subject=' + subject + '&body=' + body;
+
+    status.textContent = 'Opening your email app to send this to Tim…';
+    setTimeout(() => { status.textContent = ''; }, 6000);
+  });
+</script>
+
+</body>
+</html>
